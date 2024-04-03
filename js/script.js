@@ -13,6 +13,27 @@ let lista = [];
 // Carregar os tarefas do Local Storage ao carregar a página
 loadLocalStorage();
 
+function cadastrarTarefa(event) {
+    event.preventDefault();
+  
+    const titulo = tituloInput.value;
+    const descricao = descricaoInput.value;
+    const categoria = categoriaInput.value;
+    const data = dataInput.value;
+  
+    const tarefa = { titulo, descricao, categoria, data, status: 'pendente'};
+  
+    lista.push(tarefa);
+  
+    // Limpar os campos de entrada
+    tituloInput.value = '';
+    descricaoInput.value = '';
+    dataInput.value = '';
+  
+    atualizarListaTarefas();
+    saveLocalStorage();
+}
+
 function saveLocalStorage() {
     localStorage.setItem('lista', JSON.stringify(lista));
   }
