@@ -100,3 +100,85 @@ input[type="submit"] {
     transition: background-color 0.3s ease-in-out;
     margin: 0 auto;
 }
+
+.list-container{
+    background-color: var(--quaternary-color);
+    border: 3px solid var(--tertiary-color);
+    padding: 20px;
+    border-radius: 5px;
+    overflow: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    width: 60%;
+    max-height: calc(100vh - 300px);
+}
+
+/* Personalizar caixinha de "Ordenar por" */
+#sort-by {
+    width: 20%;
+    margin-left: 10px;
+}
+
+table,
+th,
+td {
+    border: 1px solid #37393A;
+    padding: 10px;
+}
+
+table {
+    background-color: #72717f;
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--secondary-color);
+    text-align: center;
+}
+  
+/* alterar a barra de exibição dos livros (th)*/
+th {
+    background-color: var(--secondary-color);
+    color: #37393A;
+    font-weight: bold;
+}
+  
+tr:nth-child(even) {
+    background-color: #72717f;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.complete-button,
+.delete-button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+  
+.delete-button {
+    background-color: #f44336;
+}
+
+#null{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border: 3px solid var(--tertiary-color);
+    color: var(--tertiary-color);
+    border-radius: 5px;
+    padding: 12px;
+    overflow: auto;
+    width: 300px;
+    margin: 0 auto;
+}
