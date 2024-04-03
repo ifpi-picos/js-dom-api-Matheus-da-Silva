@@ -34,6 +34,73 @@ function cadastrarTarefa(event) {
     saveLocalStorage();
 }
 
+function atualizarListaTarefas() {
+    // Limpar o conteúdo do tbody
+    cabecarioLista.innerHTML = '';
+  
+    // Verificar se há tarefas para exibir
+    if (lista.length === 0) {
+      nullMessage.style.display = 'block';
+      listaTarefas.style.display = 'none';
+      return;
+    }
+  
+    nullMessage.style.display = 'none';
+    listaTarefas.style.display = 'table';
+  
+    const filterBy = document.getElementById('filter-by').value;
+    let tarefasFiltradas = [];
+  
+    if (filterBy === 'todos') {
+        tarefasFiltradas = lista;
+    } else {
+        tarefasFiltradas = lista.filter(tarefa => tarefa.categoria === filterBy);
+    }
+  
+    // Criar as linhas da tabela com as tarefas filtradas
+    tarefasFiltradas.forEach((tarefa) => {
+        const row = document.createElement('tr');
+        const tituloCell = document.createElement('td');
+        const descricaoCell = document.createElement('td');
+        const dataCell = document.createElement('td');
+        const statusCell = document.createElement('td');
+        const actionsCell = document.createElement('td');
+    
+        tituloCell.textContent = tarefa.titulo;
+        descricaoCell.textContent = tarefa.descricao;
+        dataCell.textContent = tarefa.data;
+        statusCell.textContent = tarefa.status;
+    
+        const completeButton = document.createElement('button');
+        completeButton.textContent = 'Concluir';
+        completeButton.classList.add('complete-button');
+        completeButton.addEventListener('click', () => concluirTarefa(tarefa));
+    
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Excluir';
+        deleteButton.classList.add('delete-button');
+        deleteButton.addEventListener('click', () => excluirTarefa(tarefa));
+    
+        actionsCell.appendChild(completeButton);
+        actionsCell.appendChild(deleteButton);
+    
+        row.appendChild(tituloCell);
+        row.appendChild(descricaoCell);
+        row.appendChild(dataCell);
+        row.appendChild(statusCell);
+        row.appendChild(actionsCell);
+    
+        cabecarioLista.appendChild(row);
+      });
+  
+      if (tarefasFiltradas.length === 0) {
+        nullMessage.style.display = 'block';
+        listaTarefas.style.display = 'none';
+      } else {
+          nullMessage.style.display = 'none';
+      }
+}
+
 function saveLocalStorage() {
     localStorage.setItem('lista', JSON.stringify(lista));
   }
