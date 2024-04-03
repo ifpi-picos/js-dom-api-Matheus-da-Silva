@@ -23,3 +23,18 @@ main {
     justify-content: space-evenly;
     padding: 50px;
 }
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: var(--tertiary-color);
+    display: flex;
+    flex-direction: column;
+    color: var(--secondary-color);
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
