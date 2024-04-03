@@ -101,6 +101,24 @@ function atualizarListaTarefas() {
       }
 }
 
+const filterBySelect = document.getElementById('filter-by');
+filterBySelect.addEventListener('change', atualizarListaTarefas);
+
+function concluirTarefa(tarefa) {
+    tarefa.status = 'concluída';
+
+    atualizarListaTarefas();
+    saveLocalStorage();
+}
+
+// Função para excluir um Tarefa
+function excluirTarefa(tarefa) {
+  lista = lista.filter((item) => item !== tarefa);
+  
+  atualizarListaTarefas();
+  saveLocalStorage();
+}
+
 function saveLocalStorage() {
     localStorage.setItem('lista', JSON.stringify(lista));
   }
