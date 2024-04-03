@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO List</title>
+    
+</head>
+<body>
+    <header>
+        <h1>TO-DO List</h1>
+    </header>
+    <main>
+        <div class="form-container">
+            <form id="form-tarefa">
+                <h2 class="cadastrar">Cadastrar Tarefa</h2>
+                <label for="titulo">Título: </label>
+                <input type="text" id="titulo" required><br><br>
+
+                <label for="descricao">Descrição: </label>
+                <input type="text" id="descricao" required><br><br>
+
+                <label for="categoria">Categoria: </label>
+                <select id="categoria" required>
+                    <option value="" disabled selected>Selecione</option>
+                    <option value="trabalho">Trabalho</option>
+                    <option value="estudos">Estudos</option>
+                    <option value="lazer">Lazer</option>
+                    <option value="outros">Outros</option>
+                </select><br><br>
+
+                <label for="data">Data:</label>
+                <input type="date" id="data" required><br><br>
+
+                <input type="submit" value="Cadastrar">
+            </form>
+        </div> 
+
+        <div class="list-container">
+            <h2 class="listagem">Tarefas a fazer</h2>
+            <p class="order">Filtrar por:
+                <select id="filter-by">
+                    <option value="todos">Todos</option>
+                    <option value="trabalho">Trabalho</option>
+                    <option value="estudos">Estudos</option>
+                    <option value="lazer">Lazer</option>
+                    <option value="outros">Outros</option>
+                </select>
+            </p>
+
+            <div id="lista-tarefas-container">
+                <table id="lista-tarefas">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Descrição</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-tarefas-body"></tbody>
+                </table>
+                <p id="null">Não há tarefas...
+                </p>
+            </div>
+        </div>
+    </div>
+    </main>
+    <footer>
+        <p>
+          Desenvolvido por
+          <a href="https://github.com/MatheusGODZILLA" target="_blank">Matheus da Silva</a>
+        </p>
+    </footer>
+    
+</body>
+</html>
