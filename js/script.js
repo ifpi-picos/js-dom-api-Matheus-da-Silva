@@ -130,3 +130,6 @@ function saveLocalStorage() {
       atualizarListaTarefas();
     }
 }
+
+// Evento de submit ao formulário
+tarefaForm.addEventListener('submit', cadastrarTarefa);
