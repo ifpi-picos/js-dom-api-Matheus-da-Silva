@@ -1,0 +1,25 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #EEEDEB;
+    --tertiary-color: #3C3633;
+    --quaternary-color: #747264;
+  }
+
+* {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    background-color: var(--secondary-color);
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 50px;
+}
