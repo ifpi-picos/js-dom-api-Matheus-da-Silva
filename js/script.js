@@ -41,7 +41,7 @@ function solicitarAutorizacaoOAuth() {
 async function trocarCodigoPorAccessToken(codigo) {
     const clientID = '7b81067ab59f4391a6113fb64c89ce28';
     const clientSecret = '9c034aadafb140bf955fdeff8522fe37';
-    const redirectURI = 'https://matheusgodzilla.github.io/teste-to-do/';
+    const redirectURI = 'https://ifpi-picos.github.io/js-dom-api-Matheus-da-Silva/';
 
     const urlTrocaToken = 'https://todoist.com/oauth/access_token';
 
