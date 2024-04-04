@@ -134,7 +134,7 @@ table {
     text-align: center;
 }
   
-/* alterar a barra de exibição dos livros (th)*/
+/* alterar a barra de exibição das tarefas (th)*/
 th {
     background-color: var(--secondary-color);
     color: #37393A;
@@ -201,4 +201,46 @@ a {
     text-decoration: underline;
     font-style: italic;
     font-weight: bold;
+}
+
+/* Responsividade */
+@media only screen and (max-width: 1200px){
+    body{
+        height: auto;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+    }
+
+    .form-container{
+        margin-bottom: 50px;
+    }
+
+    .list-container{
+        width: 90%;
+        max-height: auto;
+    }
+
+    .cadastrar, .listagem{
+        font-size: 1.1rem
+    }
+
+    input[type="submit"] {
+        display: block;
+        width: 40%;
+        font-size: 0.8rem;
+    }
+
+    #null{
+        width: auto;
+    }
+
+    footer{
+        padding: 10px;
+    }
 }
