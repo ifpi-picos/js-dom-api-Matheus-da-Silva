@@ -141,6 +141,32 @@ filterBySelect.addEventListener('change', atualizarListaTarefas);
 
 function concluirTarefa(tarefa) {
     tarefa.status = 'concluída';
+    const tarefaId = tarefa.id;
+
+    // Concluir tarefa na API
+    const options = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+          id: tarefaId
+      })
+  };
+
+  const urlUpdate = `${url}/${tarefaId}/close`; // URL com o parametro close para concluir a tarefa
+
+  fetch(urlUpdate, options)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Erro ao concluir tarefa.');
+          }
+          console.log('Tarefa concluída com sucesso no Todoist.');
+      })
+      .catch(error => {
+          console.error('Ocorreu um erro:', error);
+      });
 
     atualizarListaTarefas();
     saveLocalStorage();
