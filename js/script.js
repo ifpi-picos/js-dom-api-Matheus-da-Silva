@@ -13,6 +13,10 @@ let lista = [];
 // Carregar os tarefas do Local Storage ao carregar a página
 loadLocalStorage();
 
+// Parâmetros da API
+const apiKey = 'a7c01d087b8508ae8cfb3b851fd8527107c8b878';
+const url = 'https://api.todoist.com/rest/v2/tasks';
+
 function cadastrarTarefa(event) {
     event.preventDefault();
   
@@ -24,6 +28,37 @@ function cadastrarTarefa(event) {
     const tarefa = { titulo, descricao, categoria, data, status: 'pendente'};
   
     lista.push(tarefa);
+
+    // Enviar tarefa para a API
+    const options = {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+          content: titulo,
+          description: descricao,
+          due_date: data,
+          priority: 1,
+          labels: [categoria]
+      })
+  };
+
+  fetch(url, options)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Erro ao cadastrar tarefa.');
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log('Tarefa cadastrada:', data);
+          tarefa.id = data.id;
+      })
+      .catch(error => {
+          console.error('Ocorreu um erro:', error);
+      });
   
     // Limpar os campos de entrada
     tituloInput.value = '';
@@ -111,7 +146,6 @@ function concluirTarefa(tarefa) {
     saveLocalStorage();
 }
 
-// Função para excluir um Tarefa
 function excluirTarefa(tarefa) {
   lista = lista.filter((item) => item !== tarefa);
   
@@ -121,9 +155,9 @@ function excluirTarefa(tarefa) {
 
 function saveLocalStorage() {
     localStorage.setItem('lista', JSON.stringify(lista));
-  }
+}
   
-  function loadLocalStorage() {
+function loadLocalStorage() {
     const savedlista = localStorage.getItem('lista');
     if (savedlista) {
       lista = JSON.parse(savedlista);
