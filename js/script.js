@@ -173,10 +173,32 @@ function concluirTarefa(tarefa) {
 }
 
 function excluirTarefa(tarefa) {
-  lista = lista.filter((item) => item !== tarefa);
+    lista = lista.filter((item) => item !== tarefa);
+    const tarefaId = tarefa.id;
   
-  atualizarListaTarefas();
-  saveLocalStorage();
+    // Enviar requisição DELETE para a API
+    const options = {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${apiKey}`
+        }
+    };
+  
+    const urlDelete = `${url}/${tarefaId}`;
+  
+    fetch(urlDelete, options)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao excluir tarefa.');
+            }
+            console.log('Tarefa excluída com sucesso do Todoist.');
+        })
+        .catch(error => {
+            console.error('Ocorreu um erro:', error);
+        });
+  
+      atualizarListaTarefas();
+      saveLocalStorage();
 }
 
 function saveLocalStorage() {
